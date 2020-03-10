@@ -32,14 +32,52 @@ x
 
 ## Part 2
 
-1.	Examine and open the code in [http://localhost/d3/svgBarChart2.html](http://localhost/d3/svgBarChart2.html) that uses SVG to render a simple bar chart dynamically using JavaScript.  
-	
-	Add another value to the ``data`` array and rerun the code.
+1.  Examine the code in `svgBarChart2.html` and `svgBarChart2.js` below that uses SVG to render a simple bar chart dynamically using JavaScript.  
 
-1.	Modify the code so the output includes the text like this:
+    ```html
+    <!-- svgBarChart2.html -->
+    <html>
+    <head>
+    <script type="text/javascript" src="svgBarChart2.js"></script>
+    </head>
+    <body>
 
-	![img](../images/barChart3.png)
+    <svg id="chart"></svg>
 
-	Add the text dynamically using JavaScript.
+    </body>
+    </html>
 
+    ```
+
+    ```javascript
+    // svgBarChart2.js
+    var data = [100,200,300]; 
+
+    window.onload = function() {
+        document.getElementById('chart').setAttribute('width',300);
+        document.getElementById('chart').setAttribute('height',data.length*60);
+
+        for(var i=0;i<data.length;i++) {
+            var rect=document.createElementNS("http://www.w3.org/2000/svg","rect");
+            rect.setAttribute('x',0);
+            rect.setAttribute('y',i*60);
+            rect.setAttribute('width',data[i]);
+            rect.setAttribute('height',50);
+            rect.setAttribute('fill','steelblue');
+            document.getElementById('chart').appendChild(rect);
+        }
+    }
+
+    ```
+
+1.  Add another value to the ``data`` array and rerun the code.
+
+1.	Create two files - `svgCircles2.html` and `svgCircles2.js` - that dynamically use JavaScript to create the circles below using this `data` array:
+
+    ```javascript
+    var data = [100,200,300]; 
+    
+    ```
+
+    ![img](../images/svgCircles.png)
 
